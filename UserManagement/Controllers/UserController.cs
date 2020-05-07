@@ -51,6 +51,10 @@ namespace API.Controllers
             {
                 User user = new User();
                 //Generate pass with bcrypt 
+                if (userVM.Password == null)
+                {
+                    userVM.Password = Guid.NewGuid().ToString();
+                }
                 var guiPass = userVM.Password;
                 var salt = BCryptHelper.GenerateSalt(12);
 
@@ -162,7 +166,7 @@ namespace API.Controllers
             }
         }
 
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet]
         public async Task<IEnumerable<UserVM>> Details()
         {
