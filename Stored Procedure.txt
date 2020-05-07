@@ -1,0 +1,93 @@
+Store Procedure
+
+CREATE PROCEDURE SP_Insert_UserRoles
+	@RoleId int,
+	@UserId int
+AS
+	INSERT INTO TB_T_UserRoles VALUES (@UserId, @RoleId);
+RETURN 0
+
+CREATE PROCEDURE [SP_GetRole_RoleUserRoles]
+	@UserId int
+AS
+	SELECT a.Id, a.Name
+	FROM TB_M_Role a
+	JOIN TB_T_UserRoles b ON (a.Id = b.Role_Id)
+	WHERE b.User_Id = @UserId
+RETURN 0
+
+CREATE PROCEDURE SP_GetDetailsById_AllTable
+	@Id int
+AS
+	SELECT a.*, f.Id as RoleId, f.Name as RoleName, c.Name as AppName, b.*, d.Name as ReligionName, g.Name as BatchName, h.Name as ClassName
+	FROM TB_M_User a
+	JOIN TB_T_UserDetails b ON (a.Id = b.Id)
+	JOIN TB_M_Application c ON (a.App_Type = c.Id)
+	JOIN TB_M_Religion d ON (b.ReligionId = d.Id)
+	JOIN TB_T_UserRoles e ON (a.Id = e.User_Id)
+	JOIN TB_M_Role f ON (e.Role_Id = f.Id)
+	JOIN TB_M_Batch g ON (b.BatchId = g.Id)
+	JOIN TB_M_Class h ON (b.ClassId = h.Id)
+	WHERE a.Id = @Id 
+RETURN 0
+
+CREATE PROCEDURE SP_GetDetails_AllTable
+AS
+	SELECT a.*, f.Id as RoleId, f.Name as RoleName, c.Name as AppName, b.*, d.Name as ReligionName, g.Name as BatchName, h.Name as ClassName
+	FROM TB_M_User a
+	JOIN TB_T_UserDetails b ON (a.Id = b.Id)
+	JOIN TB_M_Application c ON (a.App_Type = c.Id)
+	JOIN TB_M_Religion d ON (b.ReligionId = d.Id)
+	JOIN TB_T_UserRoles e ON (a.Id = e.User_Id)
+	JOIN TB_M_Role f ON (e.Role_Id = f.Id)
+	JOIN TB_M_Batch g ON (b.BatchId = g.Id)
+	JOIN TB_M_Class h ON (b.ClassId = h.Id)
+	--WHERE f.Name != 'Admin'
+RETURN 0
+
+CREATE PROCEDURE SP_UserAppInfo_UserApplication
+AS
+	SELECT a.Name as label, COUNT(b.App_Type) as Total
+	FROM TB_M_Application a
+	JOIN TB_M_User b ON (a.Id = b.App_Type)
+	JOIN TB_T_UserRoles c ON (b.Id = c.User_Id)
+	JOIN TB_M_Role d ON (c.Role_Id = d.Id)
+	WHERE d.Name != 'Admin'
+	GROUP BY a.Name
+RETURN 0
+
+CREATE PROCEDURE SP_UserReligionInfo_UserUserDetailsReligion
+AS
+	SELECT a.Name as label, COUNT(b.Id) as Total
+	FROM TB_M_Religion a
+	JOIN TB_T_UserDetails b ON (a.Id = b.ReligionId)
+	JOIN TB_M_User c ON (b.Id = c.Id)
+	JOIN TB_T_UserRoles d ON (c.Id = d.User_Id)
+	JOIN TB_M_Role e ON (d.Role_Id = e.Id)
+	WHERE e.Name != 'Admin'
+	GROUP BY a.Name
+RETURN 0
+
+CREATE PROCEDURE SP_UserBatchInfo_UserUserDetailsBatch
+AS
+	SELECT a.Name as label, COUNT(b.Id) as Total
+	FROM TB_M_Batch a
+	JOIN TB_T_UserDetails b ON (a.Id = b.BatchId)
+	JOIN TB_M_User c ON (b.Id = c.Id)
+	JOIN TB_T_UserRoles d ON (c.Id = d.User_Id)
+	JOIN TB_M_Role e ON (d.Role_Id = e.Id)
+	WHERE e.Name != 'Admin'
+	GROUP BY a.Name
+RETURN 0
+
+CREATE PROCEDURE SP_UserClassInfo_UserUserDetailsClass
+AS
+	SELECT a.Name as label, COUNT(b.Id) as Total
+	FROM TB_M_Class a
+	JOIN TB_T_UserDetails b ON (a.Id = b.ClassId)
+	JOIN TB_M_User c ON (b.Id = c.Id)
+	JOIN TB_T_UserRoles d ON (c.Id = d.User_Id)
+	JOIN TB_M_Role e ON (d.Role_Id = e.Id)
+	WHERE e.Name != 'Admin'
+	GROUP BY a.Name
+RETURN 0
