@@ -4,14 +4,16 @@ using API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20200507191131_addAddressDetailModel")]
+    partial class addAddressDetailModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,23 +45,6 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TB_M_Batch");
-                });
-
-            modelBuilder.Entity("API.Models.BootCamp", b =>
-                {
-                    b.Property<int>("UserId");
-
-                    b.Property<int>("BatchId");
-
-                    b.Property<int>("ClassId");
-
-                    b.HasKey("UserId", "BatchId", "ClassId");
-
-                    b.HasIndex("BatchId");
-
-                    b.HasIndex("ClassId");
-
-                    b.ToTable("TB_T_BootCamp");
                 });
 
             modelBuilder.Entity("API.Models.Class", b =>
@@ -143,7 +128,7 @@ namespace API.Migrations
 
                     b.Property<int>("FailCount");
 
-                    b.Property<bool>("LockStatus");
+                    b.Property<DateTime?>("LockoutEnd");
 
                     b.Property<string>("Password");
 
@@ -160,11 +145,15 @@ namespace API.Migrations
 
                     b.Property<string>("Address");
 
+                    b.Property<int>("BatchId");
+
                     b.Property<DateTime?>("BirthDate");
 
-                    b.Property<int>("DistrictId");
+                    b.Property<int>("ClassId");
 
                     b.Property<string>("FirstName");
+
+                    b.Property<string>("FullName");
 
                     b.Property<string>("Gender");
 
@@ -174,21 +163,15 @@ namespace API.Migrations
 
                     b.Property<int>("ReligionId");
 
-                    b.Property<int>("StateId");
-
                     b.Property<bool>("WorkStatus");
-
-                    b.Property<int>("ZipcodeId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DistrictId");
+                    b.HasIndex("BatchId");
+
+                    b.HasIndex("ClassId");
 
                     b.HasIndex("ReligionId");
-
-                    b.HasIndex("StateId");
-
-                    b.HasIndex("ZipcodeId");
 
                     b.ToTable("TB_T_UserDetails");
                 });
@@ -223,24 +206,6 @@ namespace API.Migrations
                     b.ToTable("TB_M_Zipcode");
                 });
 
-            modelBuilder.Entity("API.Models.BootCamp", b =>
-                {
-                    b.HasOne("API.Models.Batch", "Batch")
-                        .WithMany()
-                        .HasForeignKey("BatchId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("API.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("API.Models.UserDetails", "UserDetails")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("API.Models.District", b =>
                 {
                     b.HasOne("API.Models.State", "State")
@@ -259,9 +224,14 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.UserDetails", b =>
                 {
-                    b.HasOne("API.Models.District", "District")
+                    b.HasOne("API.Models.Batch", "Batch")
                         .WithMany()
-                        .HasForeignKey("DistrictId")
+                        .HasForeignKey("BatchId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("API.Models.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("API.Models.User", "User")
@@ -272,16 +242,6 @@ namespace API.Migrations
                     b.HasOne("API.Models.Religion", "Religion")
                         .WithMany()
                         .HasForeignKey("ReligionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("API.Models.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("API.Models.Zipcode", "Zipcode")
-                        .WithMany()
-                        .HasForeignKey("ZipcodeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

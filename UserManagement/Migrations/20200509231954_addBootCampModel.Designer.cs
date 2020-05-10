@@ -4,14 +4,16 @@ using API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20200509231954_addBootCampModel")]
+    partial class addBootCampModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,17 +49,23 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.BootCamp", b =>
                 {
-                    b.Property<int>("UserId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BatchId");
 
                     b.Property<int>("ClassId");
 
-                    b.HasKey("UserId", "BatchId", "ClassId");
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("BatchId");
 
                     b.HasIndex("ClassId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TB_T_BootCamp");
                 });

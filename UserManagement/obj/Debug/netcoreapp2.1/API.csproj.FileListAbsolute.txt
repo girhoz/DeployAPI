@@ -17,6 +17,7 @@ D:\ASP.Net\UserManagement\UserManagement\bin\Debug\netcoreapp2.1\API.runtimeconf
 D:\ASP.Net\UserManagement\UserManagement\bin\Debug\netcoreapp2.1\API.runtimeconfig.dev.json
 D:\ASP.Net\UserManagement\UserManagement\bin\Debug\netcoreapp2.1\API.dll
 D:\ASP.Net\UserManagement\UserManagement\bin\Debug\netcoreapp2.1\API.pdb
+D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache
 D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
 D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cache
 D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cs
@@ -25,7 +26,6 @@ D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.AssemblyInf
 D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
 D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.dll
 D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.pdb
-D:\ASP.Net\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache
 D:\MII\Tugas Akhir\DeployAPI\UserManagement\bin\Debug\netcoreapp2.1\API.deps.json
 D:\MII\Tugas Akhir\DeployAPI\UserManagement\bin\Debug\netcoreapp2.1\API.runtimeconfig.json
 D:\MII\Tugas Akhir\DeployAPI\UserManagement\bin\Debug\netcoreapp2.1\API.runtimeconfig.dev.json
@@ -40,17 +40,3 @@ D:\MII\Tugas Akhir\DeployAPI\UserManagement\obj\Debug\netcoreapp2.1\API.Assembly
 D:\MII\Tugas Akhir\DeployAPI\UserManagement\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
 D:\MII\Tugas Akhir\DeployAPI\UserManagement\obj\Debug\netcoreapp2.1\API.dll
 D:\MII\Tugas Akhir\DeployAPI\UserManagement\obj\Debug\netcoreapp2.1\API.pdb
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\bin\Debug\netcoreapp2.1\API.deps.json
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\bin\Debug\netcoreapp2.1\API.runtimeconfig.json
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\bin\Debug\netcoreapp2.1\API.runtimeconfig.dev.json
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\bin\Debug\netcoreapp2.1\API.dll
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\bin\Debug\netcoreapp2.1\API.pdb
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cache
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cs
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.AssemblyInfoInputs.cache
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.AssemblyInfo.cs
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.dll
-D:\MII\Tugas Akhir\DeployAPI\src\UserManagement\obj\Debug\netcoreapp2.1\API.pdb

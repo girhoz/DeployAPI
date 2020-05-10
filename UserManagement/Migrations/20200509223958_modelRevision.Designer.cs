@@ -4,14 +4,16 @@ using API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20200509223958_modelRevision")]
+    partial class modelRevision
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,23 +45,6 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TB_M_Batch");
-                });
-
-            modelBuilder.Entity("API.Models.BootCamp", b =>
-                {
-                    b.Property<int>("UserId");
-
-                    b.Property<int>("BatchId");
-
-                    b.Property<int>("ClassId");
-
-                    b.HasKey("UserId", "BatchId", "ClassId");
-
-                    b.HasIndex("BatchId");
-
-                    b.HasIndex("ClassId");
-
-                    b.ToTable("TB_T_BootCamp");
                 });
 
             modelBuilder.Entity("API.Models.Class", b =>
@@ -221,24 +206,6 @@ namespace API.Migrations
                     b.HasIndex("DistrictId");
 
                     b.ToTable("TB_M_Zipcode");
-                });
-
-            modelBuilder.Entity("API.Models.BootCamp", b =>
-                {
-                    b.HasOne("API.Models.Batch", "Batch")
-                        .WithMany()
-                        .HasForeignKey("BatchId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("API.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("API.Models.UserDetails", "UserDetails")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("API.Models.District", b =>

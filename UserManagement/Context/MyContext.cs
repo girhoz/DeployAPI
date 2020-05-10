@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace API.Context
 {
-    public class MyContext  : DbContext
+    public class MyContext : DbContext
     {
         public MyContext(DbContextOptions<MyContext> options) : base(options) { }
 
@@ -19,13 +19,18 @@ namespace API.Context
         public DbSet<Batch> Batch { get; set; }
         public DbSet<Class> Class { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
-
+        public DbSet<State> State { get; set; }
+        public DbSet<District> District { get; set; }
+        public DbSet<Zipcode> Zipcode { get; set; }
+        public DbSet<BootCamp> BootCamp { get; set; }
         public DbSet<UserRoles> UserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserRoles>()
                 .HasKey(u => new { u.User_Id, u.Role_Id });
+            modelBuilder.Entity<BootCamp>()
+                .HasKey(u => new { u.UserId, u.BatchId, u.ClassId });
         }
     }
 }

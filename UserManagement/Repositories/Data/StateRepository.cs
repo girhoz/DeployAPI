@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace API.Repositories.Data
 {
-    public class ApplicationRepository : GeneralRepository<Application, MyContext>
+    public class StateRepository : GeneralRepository<State, MyContext>
     {
-        public ApplicationRepository(MyContext myContext) : base(myContext)
+        public StateRepository(MyContext myContext) : base(myContext)
         {
 
         }
